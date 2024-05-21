@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   currentUser: null,
+  messages: [],
 };
 
 const userSlice = createSlice({
@@ -14,9 +15,13 @@ const userSlice = createSlice({
     clearCurrentUser(state) {
       state.currentUser = null;
     },
+    setMessages(state, action) {
+      state.messages = action.payload;
+    },
   },
 });
 
-export const { setCurrentUser, clearCurrentUser } = userSlice.actions;
+export const { setCurrentUser, clearCurrentUser, setMessages } =
+  userSlice.actions;
 
 export default userSlice.reducer;

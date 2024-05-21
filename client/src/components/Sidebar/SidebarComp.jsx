@@ -15,6 +15,7 @@ import {
 import { useEffect, useState } from "react";
 
 import { clearCurrentUser } from "../../redux/user/userSlice";
+import { clearTheme } from "../../redux/theme/themeSlice";
 
 const SidebarComp = () => {
   const dispatch = useDispatch();
@@ -41,6 +42,7 @@ const SidebarComp = () => {
         }
 
         dispatch(clearCurrentUser());
+        dispatch(clearTheme());
       } catch (error) {
         toast.error(error.message || error);
       }
@@ -48,7 +50,7 @@ const SidebarComp = () => {
   };
 
   return (
-    <Sidebar aria-label="Default sidebar example" className="!bg-gray-500">
+    <Sidebar aria-label="Default sidebar example">
       <Sidebar.Items>
         <Sidebar.ItemGroup className="flex flex-col gap-1">
           <Link to="/admin-dash?tab=dash">
@@ -70,7 +72,12 @@ const SidebarComp = () => {
           </Link>
 
           <Link to="/admin-dash?tab=inbox">
-            <Sidebar.Item active={tab === "inbox"} icon={HiInbox} label="3">
+            <Sidebar.Item
+              active={tab === "inbox"}
+              icon={HiInbox}
+              label="3"
+              as="div"
+            >
               Inbox
             </Sidebar.Item>
           </Link>

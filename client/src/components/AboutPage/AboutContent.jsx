@@ -4,7 +4,7 @@ const AboutContent = () => {
       <div className="flex flex-col justify-center items-center gap-3 max-w-4xl mx-auto">
         <h1 className="font-semibold text-xl md:text-3xl text-center">
           I am{" "}
-          <span className="bg-gradient-to-r from-[#432371] via-[#9F6976] to-[#FAAE7B] rounded-md p-2">
+          <span className="bg-gradient-to-r from-[#432371] via-[#9F6976] to-[#FAAE7B] rounded-md p-2 text-white dark:text-black">
             Rodel C. Gabriel
           </span>
         </h1>

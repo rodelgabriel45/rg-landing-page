@@ -10,7 +10,7 @@ import {
 const FooterComp = () => {
   return (
     <div>
-      <Footer container className="bg-black shadow-md md:px-40">
+      <Footer container className="!bg-black shadow-md md:px-40">
         <div className="w-full">
           <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
             <div>

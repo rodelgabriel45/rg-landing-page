@@ -1,19 +1,34 @@
-import { Navbar } from "flowbite-react";
-import { useSelector } from "react-redux";
+import { Button, Navbar } from "flowbite-react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
+
+import { IoMdMoon } from "react-icons/io";
+import { IoSunnyOutline } from "react-icons/io5";
+import { toggleTheme } from "../redux/theme/themeSlice";
 
 const Header = () => {
   const path = useLocation().pathname;
+  const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
+  const { theme } = useSelector((state) => state.theme);
 
   return (
     <header>
-      <Navbar fluid rounded className="bg-transparent p-6 md:px-40 shadow-lg">
+      <Navbar fluid rounded className="!bg-transparent p-6 md:px-40 shadow-lg">
         <Navbar.Brand as={Link} href="https://flowbite-react.com">
           <span className="self-center md:text-3xl whitespace-nowrap text-xl font-semibold dark:text-white">
             Flowbite React
           </span>
         </Navbar.Brand>
+        <Button
+          type="button"
+          onClick={() => dispatch(toggleTheme())}
+          outline
+          gradientDuoTone="purpleToBlue"
+          className="hidden lg:inline"
+        >
+          {theme === "light" ? <IoMdMoon /> : <IoSunnyOutline />}
+        </Button>
         <Navbar.Toggle />
         <Navbar.Collapse>
           <Navbar.Link as={"div"} active={path === "/"}>

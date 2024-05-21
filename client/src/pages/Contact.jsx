@@ -16,7 +16,7 @@ const Contact = () => {
           <h3 className="text-xl">Or directly email me at </h3>
           <div className="flex items-center gap-4 mt-5">
             <img src={gmailIcon} alt="gmail" className="w-10 h-10" />
-            <Button className="bg-[#071330] border md:p-3 border-purple-600 hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500">
+            <Button outline gradientDuoTone="purpleToPink" size="lg">
               <Link to="mailto:rodelgabriel45@gmail.com?subject=Message Inquiry (RG Page)">
                 rodelgabriel45@gmail.com
               </Link>
