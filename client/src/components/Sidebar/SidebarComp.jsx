@@ -1,6 +1,7 @@
-import { Sidebar } from "flowbite-react";
-import { useSelector } from "react-redux";
+import { Button, Sidebar, Toast } from "flowbite-react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
+import toast from "react-hot-toast";
 
 import {
   HiArrowSmLeft,
@@ -13,7 +14,10 @@ import {
 } from "react-icons/hi";
 import { useEffect, useState } from "react";
 
+import { clearCurrentUser } from "../../redux/user/userSlice";
+
 const SidebarComp = () => {
+  const dispatch = useDispatch();
   const location = useLocation();
   const { currentUser } = useSelector((state) => state.user);
   const [tab, setTab] = useState("");
@@ -23,6 +27,25 @@ const SidebarComp = () => {
     const tabFromUrl = urlParams.get("tab");
     setTab(tabFromUrl);
   }, [location.search]);
+
+  const handleLogout = async () => {
+    const proceed = window.confirm("Are you sure you want to logout now?");
+
+    if (proceed) {
+      try {
+        const res = await fetch("/api/auth/logout");
+        const data = await res.json();
+
+        if (!res.ok) {
+          throw new Error(data.message);
+        }
+
+        dispatch(clearCurrentUser());
+      } catch (error) {
+        toast.error(error.message || error);
+      }
+    }
+  };
 
   return (
     <Sidebar aria-label="Default sidebar example" className="!bg-gray-500">
@@ -55,8 +78,9 @@ const SidebarComp = () => {
           <Sidebar.Item
             icon={HiArrowSmLeft}
             className="hover:bg-red-500 hover:text-white cursor-pointer"
+            onClick={handleLogout}
           >
-            Sign Out
+            Signout
           </Sidebar.Item>
         </Sidebar.ItemGroup>
       </Sidebar.Items>
