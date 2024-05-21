@@ -38,7 +38,7 @@ const Header = () => {
           </Navbar.Link>
           <Navbar.Link as={"div"} active={path === "/admin-login"}>
             <Link
-              to="/admin-login"
+              to={currentUser ? "/admin-dash" : "/admin-login"}
               className="md:ml-5 md:text-xl md:bg-gradient-to-r from-purple-500 via-blue-500 to-pink-500 rounded-md md:p-2 md:text-white md:shadow-md md:hover:outline md:outline-teal-500"
             >
               {currentUser ? currentUser.username : "Admin"}

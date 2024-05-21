@@ -10,6 +10,7 @@ import FooterLayout from "./pages/FooterLayout";
 import AdminLogin from "./pages/AdminLogin";
 import PrivateRoute from "./components/PrivateRoute";
 import AdminDashboard from "./pages/AdminDashboard";
+import LoginPrivateRoute from "./components/LoginPrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -28,7 +29,10 @@ const router = createBrowserRouter([
             element: <PrivateRoute />,
             children: [{ path: "/admin-dash", element: <AdminDashboard /> }],
           },
-          { path: "/admin-login", element: <AdminLogin /> },
+          {
+            element: <LoginPrivateRoute />,
+            children: [{ path: "/admin-login", element: <AdminLogin /> }],
+          },
         ],
       },
     ],
