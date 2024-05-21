@@ -50,7 +50,10 @@ export const login = async (req, res, next) => {
 
     const { password: pass, ...rest } = user._doc;
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+    const token = jwt.sign(
+      { id: user._id, isAdmin: user.isAdmin },
+      process.env.JWT_SECRET
+    );
     res
       .cookie("access_token", token, { httpOnly: true })
       .status(200)
