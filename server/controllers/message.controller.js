@@ -44,3 +44,19 @@ export const getMessages = async (req, res, next) => {
     next(error);
   }
 };
+
+export const deleteMessage = async (req, res, next) => {
+  try {
+    const message = await Message.findById(req.params.id);
+    if (!message) return next(errorHandler(404, "Message not found!"));
+
+    if (!req.user.isAdmin)
+      return next(errorHandler(401, "Unauthorized to delete messages."));
+
+    await Message.findByIdAndDelete(req.params.id);
+
+    res.status(200).json("Message successfully deleted.");
+  } catch (error) {
+    next(error);
+  }
+};

@@ -18,10 +18,15 @@ const userSlice = createSlice({
     setMessages(state, action) {
       state.messages = action.payload;
     },
+    deleteMessage(state, action) {
+      state.messages = state.messages.filter(
+        (message) => message._id !== action.payload
+      );
+    },
   },
 });
 
-export const { setCurrentUser, clearCurrentUser, setMessages } =
+export const { setCurrentUser, clearCurrentUser, setMessages, deleteMessage } =
   userSlice.actions;
 
 export default userSlice.reducer;
