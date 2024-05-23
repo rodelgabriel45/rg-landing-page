@@ -1,8 +1,25 @@
-import { Button, Label, TextInput, Textarea } from "flowbite-react";
+import { Button, Label, Spinner, TextInput, Textarea } from "flowbite-react";
+import useSendMessage from "../../hooks/useSendMessage";
+import { useState } from "react";
 
 const ContactForm = () => {
+  const [formData, setFormData] = useState({ email: "", message: "" });
+  const { loading, sendMessage } = useSendMessage();
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await sendMessage(formData);
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <h1 className="text-center my-10 md:text-3xl">
         Feel free to send a message
       </h1>
@@ -15,6 +32,7 @@ const ContactForm = () => {
           type="email"
           placeholder="name@example.com"
           required
+          onChange={handleChange}
         />
 
         <div className="my-2 block">
@@ -27,12 +45,15 @@ const ContactForm = () => {
           required
           rows={5}
           className="resize-none"
+          onChange={handleChange}
         />
         <Button
-          className="my-5 shadow-lg hover:scale-95 transition-all transform ease-in-out"
+          disabled={loading}
+          type="submit"
+          className="my-5 shadow-lg hover:scale-95 transition-all transform ease-in-out disabled:opacity-80"
           gradientDuoTone="purpleToBlue"
         >
-          Submit
+          {loading ? <Spinner /> : "Submit"}
         </Button>
       </div>
     </form>
