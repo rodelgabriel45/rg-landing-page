@@ -9,7 +9,7 @@ import gitIcon from "../../assets/tech-icons/git-icon.png";
 const Skills = () => {
   return (
     <div className="border-t border-teal-900 mt-10">
-      <h1 className="text-center mt-5 text-xl md:text-3xl font-semibold">
+      <h1 className="text-center mt-11 text-xl md:text-3xl font-semibold">
         Technologies I use:
       </h1>
       <ul className="flex flex-wrap justify-center gap-10 md:gap-24 items-center mt-10 md:mt-24 max-w-4xl mx-auto">
