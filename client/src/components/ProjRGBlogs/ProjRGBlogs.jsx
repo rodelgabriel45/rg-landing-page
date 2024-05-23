@@ -54,13 +54,13 @@ const ProjRGBlogs = () => {
               className="md:w-[80%] mx-auto rounded-md"
             />
             <div className="border border-teal-500 rounded-tr-2xl rounded-bl-2xl max-w-[70%] my-6 mb-16 md:text-xl mx-auto p-5">
-              <p className=" text-gray-500">
+              <p className=" dark:text-gray-400">
                 This is the <span className="font-bold">admin dashboard</span>{" "}
                 page. It allows admin to view the total posts, comments, and
                 users. It also allows admin additional features such as add,
                 delete and update posts.
               </p>
-              <p className=" text-gray-500">
+              <p className=" dark:text-gray-400">
                 The sidebar also provides a tab for all posts, users, and
                 comments. Additionally, the admins can delete post and comments.
               </p>

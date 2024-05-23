@@ -52,12 +52,12 @@ const ProjChatChirp = () => {
               className="md:w-[80%] mx-auto rounded-md"
             />
             <div className="border border-teal-500 rounded-tr-2xl rounded-bl-2xl max-w-[80%] my-6 mb-16 md:text-xl mx-auto p-5">
-              <p className=" text-gray-500">
+              <p className="  dark:text-gray-400">
                 This is the <span className="font-bold">edit user profile</span>{" "}
                 page. It allows users to change their profile picture and update
                 user info such as username, email and password.
               </p>
-              <p className=" text-gray-500">
+              <p className=" dark:text-gray-400">
                 The form also has an authentication both on the frontend and
                 backend side to protect from unauthorized changes and invalid
                 inputs.

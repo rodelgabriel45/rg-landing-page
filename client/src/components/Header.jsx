@@ -5,6 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import { IoMdMoon } from "react-icons/io";
 import { IoSunnyOutline } from "react-icons/io5";
 import { toggleTheme } from "../redux/theme/themeSlice";
+import rgLogo from "../assets/rg-logo.png";
 
 const Header = () => {
   const path = useLocation().pathname;
@@ -14,12 +15,19 @@ const Header = () => {
 
   return (
     <header>
-      <Navbar fluid rounded className="!bg-transparent p-6 md:px-40 shadow-lg">
-        <Navbar.Brand as={Link} href="https://flowbite-react.com">
-          <span className="self-center md:text-3xl whitespace-nowrap text-xl font-semibold dark:text-white">
-            Flowbite React
-          </span>
-        </Navbar.Brand>
+      <Navbar fluid rounded className="!bg-transparent p-6 md:px-40 shadow-lg ">
+        <Link to="/">
+          <Navbar.Brand as={"div"}>
+            <img
+              src={rgLogo}
+              alt="RG-Logo"
+              className="w-11 h-11 rounded-full object-cover mr-2"
+            />
+            <span className="self-center md:text-3xl whitespace-nowrap text-xl font-semibold dark:text-white">
+              Rodel Gabriel
+            </span>
+          </Navbar.Brand>
+        </Link>
         <Button
           type="button"
           onClick={() => dispatch(toggleTheme())}

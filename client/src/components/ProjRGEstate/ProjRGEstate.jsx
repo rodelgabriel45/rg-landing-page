@@ -55,13 +55,13 @@ const ProjRGEstate = () => {
               className="md:w-[80%] mx-auto rounded-md"
             />
             <div className="border border-teal-500 rounded-tr-2xl rounded-bl-2xl max-w-[70%] my-6 mb-16 md:text-xl mx-auto p-5">
-              <p className=" text-gray-500">
+              <p className=" dark:text-gray-400">
                 This is the <span className="font-bold">search listing</span>{" "}
                 page. It allows users to view the listings. It also provides a
                 user friendly search methods. users. Users can select a listing
                 and contact the listing agent/poster.
               </p>
-              <p className=" text-gray-500">
+              <p className=" dark:text-gray-400">
                 The sidebar provides all the tools for searching listings.
               </p>
             </div>
