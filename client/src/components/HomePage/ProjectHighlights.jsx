@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const ProjectHighlights = () => {
   return (
-    <div className="border-t border-teal-500 mt-10">
+    <div className="mt-10">
       <h1 className="text-center mt-11 text-xl md:text-3xl font-semibold">
         Project Highlights:
       </h1>
