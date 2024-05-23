@@ -16,16 +16,19 @@ const ProjectHighlights = () => {
           cardImg={chatChirpImg}
           cardTitle="Chat Chirp"
           cardDesc="A realtime messaging app"
+          link="https://chat-chirp-webapp.onrender.com/"
         />
         <ProjectCard
           cardImg={rgBlogsImg}
           cardTitle="RG Blogs"
           cardDesc="A blog app"
+          link="https://rg-blogs.onrender.com/"
         />
         <ProjectCard
           cardImg={rgEstateImg}
           cardTitle="RG Estate"
           cardDesc="A real estate app"
+          link="https://rg-estate.onrender.com/"
         />
       </div>
       <Link
