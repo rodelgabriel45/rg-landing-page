@@ -56,7 +56,7 @@ export const addProject = async (req, res, next) => {
 
 export const getAllProjects = async (req, res, next) => {
   try {
-    const projects = await Project.find();
+    const projects = await Project.find().sort({ createdAt: -1 });
 
     res.status(200).json(projects);
   } catch (error) {
