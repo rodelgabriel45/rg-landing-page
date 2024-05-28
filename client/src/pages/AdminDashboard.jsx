@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import SidebarComp from "../components/Sidebar/SidebarComp";
 import Inbox from "../components/Sidebar/Inbox";
+import AddProject from "../components/Sidebar/AddProject";
 
 const AdminDashboard = () => {
   const location = useLocation();
@@ -20,6 +21,7 @@ const AdminDashboard = () => {
         <SidebarComp />
       </div>
       {tab === "inbox" && <Inbox />}
+      {tab === "profile" && <AddProject />}
       {/* {tab === "posts" && <DashPosts />}
   {tab === "users" && <DashUsers />}
   {tab === "comments" && <DashComments />}
