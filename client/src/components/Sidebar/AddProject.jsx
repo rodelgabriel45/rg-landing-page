@@ -1,4 +1,4 @@
-import { Button, Label, TextInput } from "flowbite-react";
+import { Button, Label, Spinner, TextInput } from "flowbite-react";
 import { useRef, useState } from "react";
 import useAddProject from "../../hooks/useAddProject";
 
@@ -9,12 +9,14 @@ const AddProject = () => {
     title: "",
     description: "",
     link: "",
+    technologies: [],
     features: [],
     cardImg: null,
     featureImg: null,
     featureDescription: "",
   });
   const [featureEntered, setFeatureEntered] = useState("");
+  const [technologyEntered, setTechnologyEntered] = useState("");
   const { loading, addProject, success } = useAddProject();
 
   const handleChange = (e) => {
@@ -55,6 +57,17 @@ const AddProject = () => {
     return setFeatureEntered("");
   };
 
+  const addToTechnologies = () => {
+    if (technologyEntered) {
+      setFormData({
+        ...formData,
+        technologies: [...formData.technologies, technologyEntered],
+      });
+    }
+
+    return setTechnologyEntered("");
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     await addProject(formData);
@@ -64,6 +77,7 @@ const AddProject = () => {
         title: "",
         description: "",
         link: "",
+        technologies: [],
         features: [],
         cardImg: null,
         featureImg: null,
@@ -73,7 +87,7 @@ const AddProject = () => {
   };
 
   return (
-    <div className="w-full flex flex-col mt-5 items-center max-w-4xl mx-auto">
+    <div className="w-full flex flex-col items-center max-w-4xl mx-auto">
       <h1 className="font-bold my-10 text-xl md:text-3xl">Add Project</h1>
       <form onSubmit={handleSubmit} className="w-[40%] flex flex-col gap-4">
         <div>
@@ -120,6 +134,39 @@ const AddProject = () => {
             value={formData.link}
             onChange={handleChange}
           />
+        </div>
+
+        <div>
+          <div className="mb-2 block">
+            <Label
+              htmlFor="technologies"
+              value="Technologies"
+              className="text-white"
+            />
+          </div>
+          <TextInput
+            id="technologies"
+            type="text"
+            placeholder="Enter a technology..."
+            value={technologyEntered}
+            onChange={(e) => setTechnologyEntered(e.target.value)}
+          />
+          <div className="flex flex-wrap items-center gap-4">
+            <Button
+              onClick={addToTechnologies}
+              outline
+              gradientDuoTone="purpleToBlue"
+              className="mt-5 w-32"
+            >
+              Add a technology
+            </Button>
+            {formData?.technologies.length > 0 &&
+              formData.technologies.map((technology, index) => (
+                <span key={`${index}${technology}`}>{`${
+                  index + 1
+                }. ${technology}`}</span>
+              ))}
+          </div>
         </div>
 
         <div>
@@ -218,9 +265,9 @@ const AddProject = () => {
         <Button
           disabled={loading}
           type="submit"
-          className="mt-5 disabled:opacity-80"
+          className="mt-5 disabled:opacity-80 mb-16"
         >
-          {loading ? "Submitting" : "Submit"}
+          {loading ? <Spinner aria-label="Default status example" /> : "Submit"}
         </Button>
       </form>
     </div>

@@ -5,7 +5,14 @@ import Project from "../models/project.model.js";
 
 export const addProject = async (req, res, next) => {
   try {
-    const { title, description, link, features, featureDescription } = req.body;
+    const {
+      title,
+      description,
+      link,
+      technologies,
+      features,
+      featureDescription,
+    } = req.body;
     let { cardImg, featureImg } = req.body;
 
     if (!req.user.isAdmin)
@@ -15,6 +22,7 @@ export const addProject = async (req, res, next) => {
       !title ||
       !description ||
       !link ||
+      !technologies ||
       !features ||
       !cardImg ||
       !featureImg ||
@@ -32,6 +40,7 @@ export const addProject = async (req, res, next) => {
       title,
       description,
       link,
+      technologies,
       features,
       cardImg,
       featureImg,

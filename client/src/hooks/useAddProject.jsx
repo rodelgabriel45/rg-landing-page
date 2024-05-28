@@ -7,7 +7,6 @@ const useAddProject = () => {
 
   const addProject = async (formData) => {
     try {
-      setSuccess(false);
       setLoading(true);
       const res = await fetch("/api/project/add", {
         method: "POST",
