@@ -33,7 +33,6 @@ const Header = () => {
           onClick={() => dispatch(toggleTheme())}
           outline
           gradientDuoTone="purpleToBlue"
-          className="hidden lg:inline"
         >
           {theme === "light" ? <IoMdMoon /> : <IoSunnyOutline />}
         </Button>

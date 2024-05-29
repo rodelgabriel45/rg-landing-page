@@ -1,10 +1,19 @@
 import ProjectCard from "../ProjectCard";
-import chatChirpImg from "../../assets/chat-chirp/zoomedSignin.png";
-import rgBlogsImg from "../../assets/rg-blogs/rgblogs.png";
-import rgEstateImg from "../../assets/rg-estate/rgestate.png";
 import { Link } from "react-router-dom";
+import { Spinner } from "flowbite-react";
+import useGetProjects from "../../hooks/useGetProjects";
 
 const ProjectHighlights = () => {
+  const { loading, projects } = useGetProjects();
+
+  if (loading) {
+    return (
+      <div className="h-screen flex justify-center items-center">
+        <Spinner aria-label="Default status example" />
+      </div>
+    );
+  }
+
   return (
     <div className="mt-10">
       <h1 className="text-center mt-11 text-xl md:text-3xl font-semibold">
@@ -12,24 +21,17 @@ const ProjectHighlights = () => {
       </h1>
 
       <div className="flex flex-col md:flex-row justify-center items-center gap-10 mt-10 md:mt-20 mb-10 transition-all transform ease-in-out">
-        <ProjectCard
-          cardImg={chatChirpImg}
-          cardTitle="Chat Chirp"
-          cardDesc="A realtime messaging app"
-          link="https://chat-chirp-webapp.onrender.com/"
-        />
-        <ProjectCard
-          cardImg={rgBlogsImg}
-          cardTitle="RG Blogs"
-          cardDesc="A blog app"
-          link="https://rg-blogs.onrender.com/"
-        />
-        <ProjectCard
-          cardImg={rgEstateImg}
-          cardTitle="RG Estate"
-          cardDesc="A real estate app"
-          link="https://rg-estate.onrender.com/"
-        />
+        {projects?.slice(0, 3).map((project) => {
+          return (
+            <ProjectCard
+              key={project._id}
+              cardImg={project.cardImg}
+              cardTitle={project.title}
+              cardDesc={project.description}
+              link={project.link}
+            />
+          );
+        })}
       </div>
       <Link
         to="/portfolio"

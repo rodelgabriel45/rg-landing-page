@@ -1,9 +1,11 @@
 import React from "react";
 import { TypeAnimation } from "react-type-animation";
 
+import headerPic from "../../assets/header-pic.jpeg";
+
 const WelcomeHeader = () => {
   return (
-    <div className="flex flex-col md:flex-row items-center p-10 mt-10 max-w-6xl mx-auto gap-10">
+    <div className="flex flex-col xl:flex-row items-center p-10 mt-10 max-w-6xl mx-auto gap-24">
       <div className="flex flex-col items-center gap-3 md:gap-10 max-w-2xl">
         <h1 className="text-3xl md:text-6xl font-bold">
           Hi! I'm{" "}
@@ -43,9 +45,9 @@ const WelcomeHeader = () => {
 
       <div>
         <img
-          src="https://img.freepik.com/premium-vector/student-avatar-illustration-user-profile-icon-youth-avatar_118339-4395.jpg"
+          src={headerPic}
           alt="Photo"
-          className="w-40 h-40 md:w-full md:h-full rounded-full"
+          className="w-40 h-40 md:w-72 md:h-72 rounded-full border-8 border-slate-500"
         />
       </div>
     </div>

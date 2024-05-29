@@ -41,12 +41,12 @@ export const login = async (req, res, next) => {
 
     const user = await User.findOne({ username });
 
-    if (!user) return next(errorHandler(404, "User not found!"));
+    if (!user) return next(errorHandler(404, "Invalid user credentials"));
 
     const validPassword = bcryptjs.compareSync(password, user.password);
 
     if (!validPassword)
-      return next(errorHandler(400, "Invalid user credentials."));
+      return next(errorHandler(400, "Invalid user credentials"));
 
     const { password: pass, ...rest } = user._doc;
 

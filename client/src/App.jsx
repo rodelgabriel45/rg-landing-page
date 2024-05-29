@@ -16,6 +16,7 @@ import AdminLogin from "./pages/AdminLogin";
 import PrivateRoute from "./components/PrivateRoute";
 import AdminDashboard from "./pages/AdminDashboard";
 import LoginPrivateRoute from "./components/LoginPrivateRoute";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 const AppLayout = () => (
   <>
@@ -40,6 +41,7 @@ const router = createBrowserRouter([
               { path: "/about", element: <About /> },
               { path: "/portfolio", element: <Portfolio /> },
               { path: "/contact", element: <Contact /> },
+              { path: "/privacy-policy", element: <PrivacyPolicy /> },
               {
                 element: <PrivateRoute />,
                 children: [

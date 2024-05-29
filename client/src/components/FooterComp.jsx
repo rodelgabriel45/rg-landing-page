@@ -35,6 +35,9 @@ const FooterComp = () => {
                   <Footer.Link className="hover:text-[#09A9C8]" as={"div"}>
                     <Link to="/about">About Me</Link>
                   </Footer.Link>
+                  <Footer.Link className="hover:text-[#09A9C8]" as={"div"}>
+                    <Link to="/privacy-policy">Privacy Policy</Link>
+                  </Footer.Link>
                 </Footer.LinkGroup>
               </div>
               <div>
